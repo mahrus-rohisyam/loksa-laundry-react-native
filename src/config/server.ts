@@ -1,0 +1,6 @@
+const server = {
+  BASE_URL: 'https://lestari.mahrusrohisyam.com',
+  API_TOKEN: 'fa2e9f560bc27fb8599ebf243d0aa00aa2c27bc34f114a19cb494601e3e5529651d1b2492edefe019b1f5af219400219d8be2fb295ee6725cbb7426bda1559a3cfeae3704c8de6e8c43b53d9c3b14aca49821a888ec904b5d981921f7340886dc1e4ac1e831ef9d97fd1ac1727b2034142f037fb485df1589e0af4c378452be3',
+};
+
+export default server;
