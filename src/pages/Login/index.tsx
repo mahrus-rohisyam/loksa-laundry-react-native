@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import CTextInput from '../../components/global/CTextArea';
-import {LoginRequest} from '../../models/Login';
+import {LoginRequest} from '../../models/Account';
 import {useAuth} from '../../context/AuthProvider';
 
 const Login = () => {

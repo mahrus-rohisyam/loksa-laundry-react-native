@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from 'react';
-import {LoginRequest} from '../models/Login';
+import {LoginRequest} from '../models/Account';
 import {AccountService} from '../service/Account';
 import {readTokenFromStorage, removeTokenFromStorage} from '../helpers/storage';
 

@@ -1,3 +1,5 @@
+import {IAddress} from './User';
+
 interface LoginRequest {
   identifier: string;
   password: string;
@@ -20,4 +22,22 @@ interface LoginResponse {
   };
 }
 
-export type {LoginRequest, LoginResponse};
+interface EditProfileRequest {
+  fullname: string;
+  phoneNumber: string;
+  email: string;
+  address: IAddress;
+}
+
+interface ChangePasswordRequest {
+  currentPassword: string;
+  password: string;
+  passwordConfirmation: string;
+}
+
+export type {
+  LoginRequest,
+  LoginResponse,
+  EditProfileRequest,
+  ChangePasswordRequest,
+};
