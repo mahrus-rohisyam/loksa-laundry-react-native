@@ -1,5 +1,5 @@
 import {UseMutationResult} from 'react-query';
-import {LoginRequest, LoginResponse} from '../models/Login';
+import {LoginRequest, LoginResponse} from '../models/Account';
 import http from './http';
 import {useMutation} from '@tanstack/react-query';
 import {saveTokenToStorage} from '../helpers/storage';
@@ -17,7 +17,7 @@ const UseLoginRequest = (): UseMutationResult<
     {
       onSuccess: data => {
         saveTokenToStorage('TOKEN', data.jwt);
-        saveTokenToStorage('TOKEN', JSON.stringify(data.user));
+        saveTokenToStorage('USER', JSON.stringify(data.user));
       },
       onError(error) {
         console.error('USER.ts', error.message);

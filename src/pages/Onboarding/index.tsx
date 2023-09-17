@@ -1,19 +1,24 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
+import Icon from 'react-native-vector-icons/Entypo';
+import {useNavigation} from '@react-navigation/native';
+import {useAuth} from '../../context/AuthProvider';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import { RootStackParamList } from '../../route';
 import { Colors, Fonts } from '../../utils';
 
 const OnBoarding: React.FC = () => {
+  const {token} = useAuth();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  // setTimeout(() => {
-  //   navigation.navigate('Login');
-  // }, 3000);
-
+  setTimeout(() => {
+    if (token) navigation.navigate('Home');
+    else navigation.navigate('Login');
+  }, 3000);
+  
   return (
     <View>
       <View style={styles.box1}>

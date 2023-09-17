@@ -1,9 +1,6 @@
-import {
-  NativeStackNavigationProp,
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Login, OnBoarding} from '../pages';
-import {useNavigation} from '@react-navigation/native';
+import Home from '../pages/Home';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -23,6 +20,7 @@ const Route = () => {
     <Stack.Navigator initialRouteName="OnBoarding">
       <Stack.Screen name="OnBoarding" component={OnBoarding} options={Off} />
       <Stack.Screen name="Login" component={Login} options={Off} />
+      <Stack.Screen name="Home" component={Home} options={Off} />
     </Stack.Navigator>
   );
 };

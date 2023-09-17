@@ -1,7 +1,11 @@
 import {createContext, useContext, useEffect, useState} from 'react';
-import {LoginRequest} from '../models/Login';
+import {LoginRequest} from '../models/Account';
 import {AccountService} from '../service/Account';
 import {readTokenFromStorage, removeTokenFromStorage} from '../helpers/storage';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../route';
+import {IUser} from '../models/User';
 
 type Role = 'Member' | 'Admin';
 
@@ -13,6 +17,8 @@ interface AuthProviderContext {
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
+  user: IUser | null;
+  token: string | null;
 }
 
 const AuthContext = createContext<AuthProviderContext | null>(null);
@@ -21,16 +27,21 @@ export const useAuth = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error('useAuth must be used within a DashboardProvider');
+    throw new Error('useAuth must be used within a useAuthProvider');
   }
   return context;
 };
 
 const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
+  const navigate =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [role, setRole] = useState<Role | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [loginErrorMessage, setLoginErrorMessage] = useState<string | null>(
     null,
   );
+
   const loginMutation = AccountService.UseLoginRequest();
   const login = async (credentials: LoginRequest) => {
     try {
@@ -43,17 +54,36 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
     }
   };
   const logout = () => {
+    console.log('LOGOUT TRIGGERED');
     setRole(null);
+    setUser(null);
+    setToken(null);
     removeTokenFromStorage('TOKEN');
     removeTokenFromStorage('USER');
-    // PUSH TO LOGIN
+    navigate.navigate('Login');
   };
 
   useEffect(() => {
-    if (readTokenFromStorage('TOKEN') === null) {
-      // PUSH TO LOGIN
+    readTokenFromStorage('TOKEN').then(value => {
+      if (value) setToken(value);
+    });
+    readTokenFromStorage('USER').then((value: any) => {
+      let parsedToken: IUser = JSON.parse(value);
+      if (parsedToken) {
+        setUser(parsedToken);
+        setRole(parsedToken.userRole);
+      }
+    });
+    if (token === null || token == '') {
+      setTimeout(() => {
+        navigate.navigate('Login');
+      }, 3000);
     }
-  }, [loginMutation.data]);
+    if (token && token !== '')
+      setTimeout(() => {
+        navigate.navigate('Home');
+      }, 3000);
+  }, [loginMutation.data, token]);
 
   const isLoading = loginMutation.isLoading;
   const isError = loginMutation.isError;
@@ -69,6 +99,8 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
         loginErrorMessage,
         logout,
         role,
+        user,
+        token,
       }}>
       {children}
     </AuthContext.Provider>

@@ -1,4 +1,5 @@
-import OnBoarding from "./Onboarding";
-import Login from "./Login";
+import OnBoarding from './Onboarding';
+import Login from './Login';
+import Home from './Home';
 
-export {OnBoarding, Login}
+export {OnBoarding, Login, Home};
