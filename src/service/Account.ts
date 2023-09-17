@@ -17,7 +17,7 @@ const UseLoginRequest = (): UseMutationResult<
     {
       onSuccess: data => {
         saveTokenToStorage('TOKEN', data.jwt);
-        saveTokenToStorage('TOKEN', JSON.stringify(data.user));
+        saveTokenToStorage('USER', JSON.stringify(data.user));
       },
       onError(error) {
         console.error('USER.ts', error.message);

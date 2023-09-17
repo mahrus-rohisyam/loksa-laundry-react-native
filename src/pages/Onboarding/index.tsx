@@ -4,13 +4,16 @@ import Icon from 'react-native-vector-icons/Entypo';
 import {RootStackParamList} from '../../route';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useAuth} from '../../context/AuthProvider';
 
 const OnBoarding: React.FC = () => {
+  const {token} = useAuth();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   setTimeout(() => {
-    navigation.navigate('Login');
+    if (token) navigation.navigate('Home');
+    else navigation.navigate('Login');
   }, 3000);
 
   return (

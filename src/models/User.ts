@@ -19,9 +19,9 @@ interface IUser {
   blocked: Boolean;
   createdAt: Date;
   updatedAt: Date;
-  username: 'Admin';
-  phoneNumber: '08123456789';
-  fullname: 'Admin Lestarti';
+  username: string;
+  phoneNumber: string;
+  fullname: string;
   userRole: 'Admin' | 'Member';
   avatar: IMedia;
   address: IAddress;
