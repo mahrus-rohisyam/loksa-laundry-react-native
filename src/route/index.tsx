@@ -1,9 +1,6 @@
-import {
-  NativeStackNavigationProp,
-  createNativeStackNavigator,
-} from '@react-navigation/native-stack';
-import {Login, OnBoarding} from '../pages';
-import {useNavigation} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import { Login, OnBoarding } from '../pages';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -17,10 +14,10 @@ export type RootStackParamList = {
 
 const Route = () => {
   const Stack = createNativeStackNavigator();
-  const Off = {headerShown: false};
+  const Off = { headerShown: false };
 
   return (
-    <Stack.Navigator initialRouteName="OnBoarding">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="OnBoarding" component={OnBoarding} options={Off} />
       <Stack.Screen name="Login" component={Login} options={Off} />
     </Stack.Navigator>

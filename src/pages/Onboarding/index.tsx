@@ -120,18 +120,18 @@ const OnBoarding: React.FC = () => {
   }
 
   return (
-    <SafeAreaView style={{ backgroundColor: Colors.blue, height: '100%' }}>
-      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+    <SafeAreaView style={{ backgroundColor: Colors.blue, height: '80%' }}>
+      {/* <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <View style={styles.circle}>
-          <View style={{ marginTop: 39, marginBottom: 30 }}>
-            <Image source={require('../../assets/images/logo.png')} style={{ width: 179, height: 95 }} />
-          </View>
-          <Image source={require('../../assets/images/group.svg')} style={{ width: '100%', height: '100%' }} />
-
-          {/* <Image source={require('../../assets/images/frame-4.png')} style={{ width: '100%', height: 400, resizeMode: 'contain', marginTop: -100 }} /> */}
+        <View style={{ marginTop: 39, marginBottom: 30 }}>
+        <Image source={require('../../assets/images/group.svg')} style={{ width: 179, height: 95 }} />
         </View>
-      </View>
+        
+        <Image source={require('../../assets/images/frame-4.png')} style={{ width: '100%', height: 400, resizeMode: 'contain', marginTop: -100 }} />
+        </View>
+      </View> */}
 
+      <Image source={require('../../assets/images/group.svg')} style={{ width: '100%', height: '100%' }} />
       <CButton title='Saya Baru Di Sini' type='light' />
     </SafeAreaView>
   )
