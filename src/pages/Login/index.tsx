@@ -1,16 +1,18 @@
-import { StyleSheet, Text, TouchableOpacity, View, Button, SafeAreaView, TextInput } from 'react-native';
-import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useAuth } from '../../context/AuthProvider';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../route';
 
+import CButton from '../../components/global/CButton';
 import CTextInput from '../../components/global/CTextArea';
 import { LoginRequest } from '../../models/Login';
-import { useAuth } from '../../context/AuthProvider';
 import { Colors, Fonts } from '../../utils';
-import CButton from '../../components/global/CButton';
 
 const Login = () => {
   const { login, role, isLoading, isError, isSuccess } = useAuth();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [loginData, setLoginData] = useState<LoginRequest>({
     identifier: '',
     password: '',
@@ -37,50 +39,28 @@ const Login = () => {
         <Text style={styles.textTitle}>Silahkan Log in</Text>
         <Text style={styles.textDesc}>Lorem ipsum dolor sit amet</Text>
 
-        <Text style={styles.text}>Nomor Handphone/Email</Text>
-        <TextInput
-          style={{ ...styles.textInput, marginBottom: 27 }}
-          onChangeText={onChangeText}
+        <View style={{ marginBottom: 27 }}>
+          <Text style={styles.text}>Nomor Handphone/Email</Text>
+          <CTextInput
+            onChangeText={onChangeText}
+            placeholder="+628987797369"
+          />
+        </View>
+        <View style={{ marginBottom: 13 }}>
+          <Text style={styles.text}>Password</Text>
+          <CTextInput onChangeText={onChangeText} />
+        </View>
 
-          placeholder="+628987797369"
-          keyboardType="numeric"
-        />
-
-        <Text style={styles.text}>Password</Text>
-        <TextInput
-          style={{ ...styles.textInput, marginBottom: 13 }}
-          onChangeText={onChangeText}
-        />
         <Text style={styles.textForgot}>Forgot Password?</Text>
       </View>
 
       <CButton type='dark' title='Log In' />
 
-      <View style={{ flexDirection: 'row', position: 'absolute', bottom: 0, marginBottom: 75, width: '100%', justifyContent: 'center' }}>
+      <TouchableOpacity onPress={() => navigation.navigate('Register')} style={{ flexDirection: 'row', position: 'absolute', bottom: 0, marginBottom: 75, width: '100%', justifyContent: 'center' }}>
         <Text style={{ ...styles.textRegister, fontFamily: Fonts['400'], color: Colors.darkBlue }}>Don’t have an account? </Text>
         <Text style={{ ...styles.textRegister, fontFamily: Fonts['700'], color: Colors.blue }}>Register</Text>
-      </View>
+      </TouchableOpacity>
     </SafeAreaView>
-    //   <CTextInput
-    //     placeholder="Username or Email"
-    //     onChangeText={text => setLoginData({...loginData, identifier: text})}
-    //     value={loginData.identifier}
-    //   />
-    //   <CTextInput
-    //     placeholder="Password"
-    //     isSecure
-    //     onChangeText={text => setLoginData({...loginData, password: text})}
-    //     value={loginData.password}
-    //   />
-    //   {error && <Text style={{color: 'red'}}>{error}</Text>}
-    //   <Text style={{backgroundColor: 'black', width: '100%', height: 50}}>
-    //     {JSON.stringify(`${isError} ${isLoading} ${isSuccess} ${role}`)}
-    //   </Text>
-    //   <Button title="Submit" onPress={handleSubmit} />
-    //   <TouchableOpacity onPress={() => navigation.goBack()}>
-    //     <Text>Go Back</Text>
-    //   </TouchableOpacity>
-    // </View>
   );
 };
 

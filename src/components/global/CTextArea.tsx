@@ -1,4 +1,5 @@
 import {StyleSheet, TextInput} from 'react-native';
+import { Colors } from '../../utils';
 
 type Props = {
   placeholder?: string;
@@ -15,7 +16,7 @@ const CTextInput = ({
 }: Props) => {
   return (
     <TextInput
-      style={{backgroundColor: 'grey'}}
+      style={styles.textInput}
       placeholder={placeholder}
       value={value}
       secureTextEntry={isSecure}
@@ -29,5 +30,11 @@ const CTextInput = ({
 export default CTextInput;
 
 const styles = StyleSheet.create({
-  
+  textInput: {
+    padding: 9,
+    borderWidth: 1,
+    marginTop: 7,
+    borderColor: "#E8E8E8",
+    borderRadius: 5
+  },
 });
