@@ -8,5 +8,5 @@ export const Colors = {
   green1: "#60D669",
   green2: "#60D669",
   error: "#E03B66",
-  
+  grey: '#E8E8E8',
 }
