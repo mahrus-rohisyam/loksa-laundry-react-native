@@ -5,8 +5,13 @@ import { Colors, Fonts } from '../../utils';
 import CTextInput from '../../components/global/CTextArea';
 import { Flag, MyPlace } from '../../assets/images';
 import CButton from '../../components/global/CButton';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../route';
 
 const Register = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   const [text, onChangeText] = useState<string | null>(null);
   const [emailPage, setEmailPage] = useState<boolean>(false);
   const [namePage, setNamePage] = useState<boolean>(false);
@@ -40,7 +45,7 @@ const Register = () => {
         </View>
 
         <View style={{ height: '10%' }}>
-          <CButton title='Lanjutkan' type='dark' onPress={() => setEmailPage(true)} />
+          <CButton title='Lanjutkan' type='dark' onPress={() => navigation.navigate('MainApp')} />
         </View>
       </SafeAreaView>
     );
