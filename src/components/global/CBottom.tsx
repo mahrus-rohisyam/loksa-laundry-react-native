@@ -63,6 +63,7 @@ const CBottom: React.FC<CBottomProps> = ({ state, descriptors, navigation }) => 
 export default CBottom;
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Colors.white,
     width: '35%',
     flexDirection: 'row',
     alignItems: 'center',

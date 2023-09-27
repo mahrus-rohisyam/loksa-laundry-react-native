@@ -11,5 +11,6 @@ import ICProfile from './ICProfile.png';
 import ICHomeAktif from './ICHomeAktif.png';
 import ICActivityAktif from './ICActivityAktif.png';
 import ICProfileAktif from './ICProfileAktif.png';
+import Avatar from './avatar.png';
 
-export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif };
+export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar };
