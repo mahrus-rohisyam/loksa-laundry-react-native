@@ -14,8 +14,10 @@ import ICProfileAktif from './ICProfileAktif.png';
 import Avatar from './avatar.png';
 import Satuan from './satuan.png';
 import Kiloan from './kiloan.png';
-import BGMaps from './background-maps.png'
-import BGHome from './background-home.png'
-import IDown from './vector-down.png'
+import BGMaps from './background-maps.png';
+import BGHome from './background-home.png';
+import IDown from './vector-down.png';
+import Group from './group.svg';
+import IHome from './group-35.png';
 
-export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown };
+export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome };

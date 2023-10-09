@@ -1,16 +1,23 @@
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ImageBackground, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { Image, ImageBackground, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Icon from 'react-native-vector-icons/Fontisto'
+import Modal from 'react-native-modal'
+
+import { BGHome, BGMaps, IDown, Kiloan, Satuan } from '../../assets/images'
 import { RootStackParamList } from '../../route'
 import { Colors, Fonts } from '../../utils'
-import { BGHome, BGMaps, IDown, Kiloan, Satuan } from '../../assets/images'
-import Icon from 'react-native-vector-icons/Fontisto'
+import { CHome } from '../../components/global'
 
-type Props = {}
+type Props = {};
 
 const Home = (props: Props) => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [modalCHome, setModalCHome] = useState(true);
+  const isModalCHome = () => setModalCHome(!modalCHome);
+
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <View style={{ backgroundColor: '#F6FAFE', height: '100%' }}>
@@ -72,11 +79,17 @@ const Home = (props: Props) => {
         </TouchableOpacity>
       </View>
 
+      {/* Modal CHome */}
+      <Modal
+        isVisible={modalCHome}
+      >
+        <CHome onPress={isModalCHome} />
+      </Modal>
     </View>
   )
 }
 
-export default Home
+export default Home;
 
 const styles = StyleSheet.create({
   page: {

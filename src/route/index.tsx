@@ -36,7 +36,7 @@ const MainApp: React.FC = () => {
 const Route: React.FC = () => {
   const Off = { headerShown: false };
   return (
-    <Stack.Navigator initialRouteName="Register">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen name="MainApp" component={MainApp} options={Off} />
       <Stack.Screen name="Login" component={Login} options={Off} />
       <Stack.Screen name="Register" component={Register} options={Off} />
