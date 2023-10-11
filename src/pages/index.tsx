@@ -4,5 +4,6 @@ import Register from "./Register";
 import Home from "./Home";
 import Activity from "./Activity";
 import Profile from "./Profile";
+import OrderDetail from "./OrderDetail";
 
-export {OnBoarding, Login, Register, Home, Activity, Profile,}
+export {OnBoarding, Login, Register, Home, Activity, Profile, OrderDetail}

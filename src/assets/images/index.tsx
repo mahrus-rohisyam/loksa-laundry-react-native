@@ -19,5 +19,9 @@ import BGHome from './background-home.png';
 import IDown from './vector-down.png';
 import Group from './group.svg';
 import IHome from './group-35.png';
+import ICAntar from './ICAntar.png';
+import ICProses from './ICProses.png';
+import ICJemput from './ICJemput.png';
+import ICItem from './ICItem.png'
 
-export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome };
+export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome, ICAntar, ICProses, ICJemput, ICItem };

@@ -13,7 +13,7 @@ import { CHome } from '../../components/global'
 type Props = {};
 
 const Home = (props: Props) => {
-  const [modalCHome, setModalCHome] = useState(true);
+  const [modalCHome, setModalCHome] = useState<boolean>(true);
   const isModalCHome = () => setModalCHome(!modalCHome);
 
   const navigation =

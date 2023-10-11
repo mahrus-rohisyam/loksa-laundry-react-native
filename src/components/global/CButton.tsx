@@ -1,24 +1,25 @@
 import React from 'react';
 import { Text, TextStyle, View, ViewStyle, TouchableOpacity } from 'react-native';
 import { Colors, Fonts } from '../../utils';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 interface CButtonProps {
   title: string;
-  type?: 'light' | 'dark';
+  type?: 'light' | 'dark' | 'success' | 'process' | 'warning';
   onPress?: () => void;
 }
 
-const getButtonStyle = (type: 'light' | 'dark' | undefined): ViewStyle => ({
+const getButtonStyle = (type: 'light' | 'dark' | 'success' | 'process' | 'warning' | undefined): ViewStyle => ({
   padding: 12,
-  backgroundColor: type === 'light' ? Colors.grey : Colors.darkBlue,
+  backgroundColor: type === 'dark' ? Colors.darkBlue : type === 'success' ? Colors.blue : type === 'warning' ? Colors.orange : type === 'process' ? Colors.green1 : Colors.white,
   marginHorizontal: '5%',
   borderRadius: 28,
   alignItems: 'center',
   justifyContent: 'center',
 });
 
-const getTextButtonStyle = (type: 'light' | 'dark' | undefined): TextStyle => ({
-  color: type === 'light' ? Colors.white : Colors.white,
+const getTextButtonStyle = (type: 'light' | 'dark' | 'success' | 'process' | 'warning' | undefined): TextStyle => ({
+  color: type === 'light' ? Colors.darkBlue : Colors.white,
   fontFamily: Fonts['600'],
   fontSize: 14,
   lineHeight: 18,
@@ -30,7 +31,7 @@ const CButton: React.FC<CButtonProps> = ({ title, type, onPress }) => {
 
   return (
     <TouchableOpacity style={buttonStyle} onPress={onPress}>
-      <Text style={textButtonStyle}>{title}</Text>
+      <Text style={textButtonStyle}>{type === 'process' && <Icon name='whatsapp' size={15} color={Colors.white} />}  {title}</Text>
     </TouchableOpacity>
   );
 };

@@ -18,7 +18,7 @@ const Profile = (props: Props) => {
   if (edit) {
     return (
       <View style={{ backgroundColor: '#F6FAFE', height: '100%' }}>
-        <CHeader title='Informasi Profile' textRight='Edit' onPress={() => openEditPage()} />
+        <CHeader title='Informasi Profile' textRight='Edit' buttonRight={() => openEditPage()} />
         <View style={{ backgroundColor: Colors.white, marginTop: 13, paddingHorizontal: 22 }}>
           <Text style={styles.textParagraph}>Data Pribadi</Text>
           <CListData title='Nama awal' desc='Vaiz' isBorder />

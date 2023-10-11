@@ -132,7 +132,7 @@ const OnBoarding: React.FC = () => {
       </View> */}
 
       <Image source={require('../../assets/images/group.svg')} style={{ width: '100%', height: '100%' }} />
-      <CButton title='Saya Baru Di Sini' type='light' />
+      <CButton title='Saya Baru Di Sini' type='light' onPress={() => navigation.navigate('MainApp')} />
     </SafeAreaView>
   )
 }
