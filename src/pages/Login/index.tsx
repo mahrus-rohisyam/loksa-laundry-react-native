@@ -54,7 +54,7 @@ const Login = () => {
         <Text style={styles.textForgot}>Forgot Password?</Text>
       </View>
 
-      <CButton type='dark' title='Log In' />
+      <CButton type='dark' title='Log In' onPress={() => navigation.replace('MainApp')} />
 
       <TouchableOpacity onPress={() => navigation.navigate('Register')} style={{ flexDirection: 'row', position: 'absolute', bottom: 0, marginBottom: 75, width: '100%', justifyContent: 'center' }}>
         <Text style={{ ...styles.textRegister, fontFamily: Fonts['400'], color: Colors.darkBlue }}>Don’t have an account? </Text>

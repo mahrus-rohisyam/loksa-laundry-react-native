@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useEffect, useState } from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import Modal from 'react-native-modal'
 
 import { ICAntar, ICJemput, ICProses } from '../../assets/images'
@@ -95,6 +95,7 @@ const Activity = (Props: AktivityProps) => {
           margin: 0,
         }}
       >
+        <Pressable style={{ flex: 1 }} onPress={showModalStatusPembayaran}></Pressable>
         <CModalPay onPress={() => navigation.navigate('OrderDetail')} />
       </Modal>
     </View>

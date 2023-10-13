@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Login, OnBoarding, Register, Home, Activity, Profile, OrderDetail } from '../pages';
+import { Login, OnBoarding, Register, Home, Activity, Profile, OrderDetail, Service } from '../pages';
 import { CBottom } from '../components/global';
 
 export type RootStackParamList = {
@@ -18,6 +18,7 @@ export type RootStackParamList = {
   OnBoarding: undefined;
   MainApp: undefined;
   OrderDetail: undefined;
+  Service: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -43,6 +44,7 @@ const Route: React.FC = () => {
       <Stack.Screen name="Register" component={Register} options={Off} />
       <Stack.Screen name="OnBoarding" component={OnBoarding} options={Off} />
       <Stack.Screen name="OrderDetail" component={OrderDetail} options={Off} />
+      <Stack.Screen name="Service" component={Service} options={Off} />
     </Stack.Navigator>
   );
 };

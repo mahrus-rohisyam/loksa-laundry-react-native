@@ -13,5 +13,7 @@ import COrderMessage from "./COrderMessage";
 import COrderStatus from "./COrderStatus";
 import CItemOrder from "./CItemOrder";
 import CShippingDetail from "./CShippingDetail";
+import CPaymentSummary from "./CPaymentSummary";
 
-export { CButton, CTextInput, CItem, CBottom, CHeader, CList, CListData, CHome, CModalPay, COrder, CTabBar, COrderMessage, COrderStatus, CItemOrder, CShippingDetail }
+
+export { CButton, CTextInput, CItem, CBottom, CHeader, CList, CListData, CHome, CModalPay, COrder, CTabBar, COrderMessage, COrderStatus, CItemOrder, CShippingDetail, CPaymentSummary }

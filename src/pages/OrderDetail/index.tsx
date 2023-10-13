@@ -3,11 +3,10 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { CButton, CHeader, CItemOrder, COrderMessage, COrderStatus, CShippingDetail } from '../../components/global'
+import { CButton, CHeader, CItemOrder, COrderMessage, COrderStatus, CShippingDetail, CPaymentSummary } from '../../components/global'
 import { RootStackParamList } from '../../route';
 import { Colors, Fonts } from '../../utils';
 import { ICItem } from '../../assets/images';
-import CPaymentSummary from '../../components/global/CPaymentSummary';
 
 type Props = {}
 
@@ -52,7 +51,12 @@ const OrderDetail = (props: Props) => {
         />
 
         <Text style={styles.title}>Ringkasan pembayaran</Text>
-        <CPaymentSummary />
+        <CPaymentSummary
+          metodePembayaran='COD'
+          cuciLengkap={15.000}
+          ongkosKirim={3.000}
+          totalPembayaran={18.000}
+        />
 
       </ScrollView>
 

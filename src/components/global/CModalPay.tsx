@@ -10,23 +10,28 @@ type ModalPayProps = {
 }
 
 const CModalPay: React.FC<ModalPayProps> = ({ onPress }) => {
-  const [index, setIndex] = useState<number>(0);
+  const [index, setIndex] = useState<string>('finish');
+
+  const getValue = (value: string) => {
+    setIndex(value)
+  }
+
   return (
     <View style={styles.page}>
       <Text style={styles.title}>Status Pembayaran</Text>
 
-      <TouchableOpacity onPress={() => setIndex(0)} style={styles.button}>
+      <TouchableOpacity onPress={() => getValue('finish')} style={styles.button}>
         <Text style={{ ...styles.text, marginLeft: '3%' }}>Selesai</Text>
         <CheckBox
-          checked={index === 0}
+          checked={index === 'finish'}
           checkedIcon="dot-circle-o"
           uncheckedIcon="circle-o"
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setIndex(1)} style={{ ...styles.button, borderTopWidth: 1, borderColor: '#E6EDF5', borderBottomWidth: 1, marginHorizontal: '5%', }}>
+      <TouchableOpacity onPress={() => getValue('waitPay')} style={{ ...styles.button, borderTopWidth: 1, borderColor: '#E6EDF5', borderBottomWidth: 1, marginHorizontal: '5%', }}>
         <Text style={styles.text}>Menunggu Pembayaran</Text>
         <CheckBox
-          checked={index === 1}
+          checked={index === 'waitPay'}
           checkedIcon="dot-circle-o"
           uncheckedIcon="circle-o"
           containerStyle={{
@@ -35,10 +40,10 @@ const CModalPay: React.FC<ModalPayProps> = ({ onPress }) => {
           }}
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setIndex(2)} style={styles.button}>
+      <TouchableOpacity onPress={() => getValue('error')} style={styles.button}>
         <Text style={{ ...styles.text, marginLeft: '3%' }}>Error</Text>
         <CheckBox
-          checked={index === 2}
+          checked={index === 'error'}
           checkedIcon="dot-circle-o"
           uncheckedIcon="circle-o"
         />

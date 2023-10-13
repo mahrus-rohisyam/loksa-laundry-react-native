@@ -9,39 +9,13 @@ import { RootStackParamList } from '../../route';
 import { Colors, Fonts } from '../../utils';
 // import Frame from '../../assets/images/group.svg';
 import CButton from '../../components/global/CButton';
+import { Group } from '../../assets/images';
 
 
 const OnBoarding: React.FC = () => {
   const [showOnBoarding, setShowOnBoarding] = useState(false);
   const [position, setPosition] = useState(0)
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-
-  // const images = [
-  //   require('../../assets/images/frame.png'),
-  //   require('../../assets/images/frame-2.png'),
-  //   require('../../assets/images/frame-3.png'),
-  // ]
-
-  // const titleText = () => {
-  //   if (position === 0) {
-  //     return 'Lorem Ipsum Dolorr';
-  //   } else if (position === 1) {
-  //     return 'Lorem Ipsum Dolorr';
-  //   } else {
-  //     return 'Lorem Ipsum Dolorr';
-  //   }
-  // }
-
-  // const descText = () => {
-  //   if (position === 0) {
-  //     return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pulvinar hendrerit leo vitae mollis. Cras non volutpat lacus.';
-  //   } else if (position === 1) {
-  //     return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pulvinar hendrerit leo vitae mollis. Cras non volutpat lacus.';
-  //   } else {
-  //     return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pulvinar hendrerit leo vitae mollis. Cras non volutpat lacus.';
-  //   }
-  // }
-
 
   const buttonNext = () => {
     return (
@@ -120,19 +94,16 @@ const OnBoarding: React.FC = () => {
   }
 
   return (
-    <SafeAreaView style={{ backgroundColor: Colors.blue, height: '80%' }}>
-      {/* <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <View style={styles.circle}>
-        <View style={{ marginTop: 39, marginBottom: 30 }}>
-        <Image source={require('../../assets/images/group.svg')} style={{ width: 179, height: 95 }} />
-        </View>
-        
-        <Image source={require('../../assets/images/frame-4.png')} style={{ width: '100%', height: 400, resizeMode: 'contain', marginTop: -100 }} />
-        </View>
-      </View> */}
+    <SafeAreaView style={{ backgroundColor: Colors.blue, height: '100%' }}>
+      <View style={{ height: '75%', justifyContent: 'center', alignItems: 'center' }}>
+        <Group height={500} width={500} />
+      </View>
 
-      <Image source={require('../../assets/images/group.svg')} style={{ width: '100%', height: '100%' }} />
-      <CButton title='Saya Baru Di Sini' type='light' onPress={() => navigation.navigate('MainApp')} />
+      <View style={{ height: '25%', paddingVertical: '10%' }}>
+        <CButton title='Saya Baru Di Sini' type='light' onPress={() => navigation.navigate('Login')} />
+        <View style={{ marginVertical: 6 }} />
+        <CButton title='Belum Pernah Di Sini' type='dark' onPress={() => navigation.navigate('Register')} />
+      </View>
     </SafeAreaView>
   )
 }

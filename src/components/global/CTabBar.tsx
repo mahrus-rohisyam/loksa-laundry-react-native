@@ -35,19 +35,19 @@ const CTabBar: React.FC<CTabBarProps> = ({ tabBarActive, isJemput, isProses, isA
           <Text style={{ ...styles.textTitle, color: Colors.white }}>Pembayaran </Text>
           <Icon name='chevron-thin-down' color={Colors.white} />
         </TouchableOpacity>
-        <TouchableOpacity style={{ ...styles.button, backgroundColor: '#79D46A', flexDirection: 'row', alignItems: 'center' }}>
+        <TouchableOpacity onPress={onPress} style={{ ...styles.button, backgroundColor: '#79D46A', flexDirection: 'row', alignItems: 'center' }}>
           <Text style={{ ...styles.textTitle, color: Colors.white }}>Selesai </Text>
           <Icon name='chevron-thin-down' color={Colors.white} />
         </TouchableOpacity>
-        <TouchableOpacity style={{ ...styles.button, backgroundColor: '#FE8D24', flexDirection: 'row', alignItems: 'center' }}>
+        <TouchableOpacity onPress={onPress} style={{ ...styles.button, backgroundColor: '#FE8D24', flexDirection: 'row', alignItems: 'center' }}>
           <Text style={{ ...styles.textTitle, color: Colors.white }}>Menunggu </Text>
           <Icon name='chevron-thin-down' color={Colors.white} />
         </TouchableOpacity>
-        <TouchableOpacity style={{ ...styles.button, backgroundColor: '#E03B66', flexDirection: 'row', alignItems: 'center' }}>
+        <TouchableOpacity onPress={onPress} style={{ ...styles.button, backgroundColor: '#E03B66', flexDirection: 'row', alignItems: 'center' }}>
           <Text style={{ ...styles.textTitle, color: Colors.white }}>Error </Text>
           <Icon name='chevron-thin-down' color={Colors.white} />
         </TouchableOpacity>
-        <TouchableOpacity style={{ ...styles.button, backgroundColor: '#E03B66', flexDirection: 'row', alignItems: 'center' }}>
+        <TouchableOpacity onPress={onPress} style={{ ...styles.button, backgroundColor: '#E03B66', flexDirection: 'row', alignItems: 'center' }}>
           <Text style={{ ...styles.textTitle, color: Colors.white }}>Di batalkan </Text>
           <Icon name='chevron-thin-down' color={Colors.white} />
         </TouchableOpacity>
