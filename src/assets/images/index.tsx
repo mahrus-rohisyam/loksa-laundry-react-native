@@ -18,6 +18,11 @@ import BGMaps from './background-maps.png';
 import BGHome from './background-home.png';
 import IDown from './vector-down.png';
 import Group from './group.svg';
+import Kemeja from './kemeja.svg';
+import PakaianDalam from './pakaian-dalam.svg';
+import Kaos from './kaos.svg';
+import Celana from './celana.svg';
+import Dress from './dress.svg';
 import IHome from './group-35.png';
 import ICAntar from './ICAntar.png';
 import ICProses from './ICProses.png';
@@ -31,4 +36,4 @@ import ICCuciKering from './ICCuciKering.png';
 import ICCuciLengkap from './ICCuciLengkap.png';
 import ICSetrika from './ICSetrika.png';
 
-export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome, ICAntar, ICProses, ICJemput, ICItem, ICAktivityWait, ICAktivityFinish, ICAktivityError, BannerService, ICCuciKering, ICCuciLengkap, ICSetrika };
+export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome, ICAntar, ICProses, ICJemput, ICItem, ICAktivityWait, ICAktivityFinish, ICAktivityError, BannerService, ICCuciKering, ICCuciLengkap, ICSetrika, Kemeja, PakaianDalam, Kaos, Celana, Dress };

@@ -34,6 +34,7 @@ const Activity = (Props: AktivityProps) => {
   const buttonJemput = () => { setTabBarActive({ isJemput: true, isProses: false, isAntar: false }) };
   const buttonProses = () => { setTabBarActive({ isJemput: false, isProses: true, isAntar: false }) };
   const buttonAntar = () => { setTabBarActive({ isJemput: false, isProses: false, isAntar: true }) };
+  const [data, setData] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
 
   return (
     <View>
@@ -52,7 +53,7 @@ const Activity = (Props: AktivityProps) => {
       </View>
 
       <ScrollView style={{ backgroundColor: '#E6EDF5' }}>
-        {tabBarActive.isJemput && [1, 2, 3, 4, 5, 6, 7, 8].map(() => (
+        {tabBarActive.isJemput && data.map(() => (
           <View style={{ marginTop: 10 }}>
             <COrder
               noOder='No. Order #1'
@@ -62,7 +63,7 @@ const Activity = (Props: AktivityProps) => {
             />
           </View>
         ))}
-        {tabBarActive.isProses && [1, 2, 3, 4, 5, 6, 7, 8].map(() => (
+        {tabBarActive.isProses && data.map(() => (
           <View style={{ marginTop: 10 }}>
             <COrder
               noOder='No. Order #1'
@@ -72,7 +73,7 @@ const Activity = (Props: AktivityProps) => {
             />
           </View>
         ))}
-        {tabBarActive.isAntar && [1, 2, 3, 4, 5, 6, 7, 8].map(() => (
+        {tabBarActive.isAntar && data.map(() => (
           <View style={{ marginTop: 10, }}>
             <COrder
               noOder='No. Order #1'
