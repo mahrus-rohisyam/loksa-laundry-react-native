@@ -70,8 +70,9 @@ const Home = (props: Props) => {
       <View style={{ paddingHorizontal: 20, marginTop: 21, marginBottom: 15 }}>
         <Text>Lestari Laundry Service</Text>
       </View>
+
       <View style={styles.wrapImage}>
-        <TouchableOpacity >
+        <TouchableOpacity>
           <Image source={Kiloan} />
         </TouchableOpacity>
         <TouchableOpacity>
@@ -120,9 +121,9 @@ const styles = StyleSheet.create({
   location: { fontFamily: Fonts['400'], fontSize: 10, color: Colors.grey, lineHeight: 18 },
   wrapImage: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 20,
+    justifyContent: 'space-evenly',
+    marginHorizontal: '5%',
+    padding: 0,
   },
   buttonDetail: {
     marginTop: 21,
