@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet, TextStyle, Image } from 'react-native';
-import { ICAktivity, ICActivityAktif, ICHome, ICHomeAktif, ICProfile, ICProfileAktif } from '../../assets/images';
+import { Image, StyleSheet, Text, TextStyle, TouchableOpacity } from 'react-native';
+import { ICActivityAktif, ICAktivity, ICHome, ICHomeAktif, ICProfile, ICProfileAktif, ICDashboardAktif, ICOrderAktif, ICReportsAktif, ICDashboard, ICOrder, ICReports } from '../../assets/images';
 import { Colors, Fonts } from '../../utils';
 
 type Props = {
@@ -18,6 +18,8 @@ type Styles = {
 };
 
 const CItem: React.FC<Props> = ({ title, active, onPress, onLongPress }) => {
+
+  // Ini Icon Tabbar untuk User
   const getIcon = () => {
     switch (title) {
       case 'Home':
@@ -31,9 +33,26 @@ const CItem: React.FC<Props> = ({ title, active, onPress, onLongPress }) => {
     }
   };
 
+  // Ini Icon Tabbar untuk Admin
+  const getIconAdmin = () => {
+    switch (title) {
+      case 'Dashboard':
+        return active ? <Image style={styles.icon} source={ICDashboardAktif} /> : <Image style={styles.icon} source={ICDashboard} />;
+      case 'Orders':
+        return active ? <Image style={styles.icon} source={ICOrderAktif} /> : <Image style={styles.icon} source={ICOrder} />;
+      case 'Reports':
+        return active ? <Image style={styles.icon} source={ICReportsAktif} /> : <Image style={styles.icon} source={ICReports} />;
+      case 'Profile':
+        return active ? <Image style={styles.icon} source={ICProfileAktif} /> : <Image style={styles.icon} source={ICProfile} />;
+      default:
+        return <Image style={styles.icon} source={ICDashboardAktif} />;
+    }
+  };
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress} onLongPress={onLongPress}>
-      {getIcon()}
+      {/* {getIcon()} */}
+      {getIconAdmin()}
       <Text style={active ? styles.textActive : styles.text}>{title}</Text>
     </TouchableOpacity>
   );
@@ -58,4 +77,8 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     fontSize: 12,
   },
+  icon: {
+    height: 25,
+    width: 25
+  }
 });

@@ -35,5 +35,14 @@ import BannerService from './banner-service.png';
 import ICCuciKering from './ICCuciKering.png';
 import ICCuciLengkap from './ICCuciLengkap.png';
 import ICSetrika from './ICSetrika.png';
+import ICDashboardAktif from './ICDashboardAktif.png';
+import ICDashboard from './ICDashboard.png';
+import ICOrderAktif from './ICOrderAktif.png';
+import ICOrder from './ICOrder.png';
+import ICReportsAktif from './ICReportsAktif.png';
+import ICReports from './ICReports.png';
+import Report from './Report.svg'
+import BGPesanan from './BGPesanan.png'
+import BGPenghasilan from './BGPenghasilan.png'
 
-export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome, ICAntar, ICProses, ICJemput, ICItem, ICAktivityWait, ICAktivityFinish, ICAktivityError, BannerService, ICCuciKering, ICCuciLengkap, ICSetrika, Kemeja, PakaianDalam, Kaos, Celana, Dress };
+export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome, ICAntar, ICProses, ICJemput, ICItem, ICAktivityWait, ICAktivityFinish, ICAktivityError, BannerService, ICCuciKering, ICCuciLengkap, ICSetrika, Kemeja, PakaianDalam, Kaos, Celana, Dress, ICDashboardAktif, ICOrderAktif, ICReportsAktif, ICDashboard, ICOrder, ICReports, Report, BGPesanan, BGPenghasilan };

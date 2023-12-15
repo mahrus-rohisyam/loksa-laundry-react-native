@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View, ImageURISource, ImageRequireSource } from 'react-native'
 import React from 'react'
 import { Colors, Fonts } from '../../utils'
 
@@ -6,19 +6,19 @@ type COrderProps = {
   noOder: string,
   price: number,
   date: string,
-  img: string
+  img: ImageURISource | ImageRequireSource,
 }
 
 const COrder: React.FC<COrderProps> = ({ noOder, price, date, img }) => {
   return (
     <View style={styles.page}>
-      <View style={{justifyContent: 'space-evenly'}}>
+      <View style={{ justifyContent: 'space-evenly' }}>
         <Text style={styles.textNo}>{noOder}</Text>
         <Text style={styles.textPrice}>IDR. {price}</Text>
         <Text style={styles.textDate}>{date}</Text>
       </View>
 
-      <View style={{padding: 6}}>
+      <View style={{ padding: 6 }}>
         <Image source={img} style={styles.img} />
       </View>
     </View>
@@ -42,19 +42,19 @@ const styles = StyleSheet.create({
     height: 75,
     resizeMode: 'contain'
   },
-  textNo:{
+  textNo: {
     fontFamily: Fonts['600'],
     fontSize: 16,
     lineHeight: 20,
     color: Colors.darkBlue
   },
-  textPrice:{
+  textPrice: {
     fontFamily: Fonts['500'],
     fontSize: 16,
     lineHeight: 20,
     color: Colors.blue
   },
-  textDate:{
+  textDate: {
     fontFamily: Fonts['400'],
     fontSize: 12,
     lineHeight: 15,

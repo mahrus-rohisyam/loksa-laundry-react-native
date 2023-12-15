@@ -32,7 +32,6 @@ const CBottom: React.FC<CBottomProps> = ({ state, descriptors, navigation }) => 
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            // The `merge: true` option makes sure that the params inside the tab screen are preserved
             navigation.navigate({ name: route.name, merge: true });
           }
         };
@@ -64,7 +63,7 @@ export default CBottom;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
-    width: '35%',
+    width: '25%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
