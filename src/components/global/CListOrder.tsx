@@ -22,7 +22,7 @@ const CListOrder: React.FC<ListOrder> = ({ icon, name, noOrder, price, date, clo
           </View>
           <Text style={styles.noOrder}>{noOrder}</Text>
         </View>
-        <View>
+        <View style={{alignItems: 'flex-end'}}>
           <Text style={{ ...styles.name, fontFamily: Fonts['500'], marginBottom: 3 }}>IDR. {price}</Text>
           <Text style={styles.date}>{date}</Text>
           <Text style={styles.date}>{clock}</Text>

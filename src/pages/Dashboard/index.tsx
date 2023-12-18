@@ -77,7 +77,7 @@ const Dashboard = (props: Props) => {
         <Text style={styles.textDetail}>Lihat Detail</Text>
       </View>
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ marginHorizontal: 22, backgroundColor: Colors.white, borderRadius: 10, paddingVertical: 18, paddingHorizontal: 16 }}>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(() =>
             <CListOrder
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     marginBottom: 23
   },
   header: { backgroundColor: Colors.white, borderBottomLeftRadius: 28, borderBottomRightRadius: 28 },
-  textLorem: { fontFamily: Fonts['800'], fontWeight: 'bold', fontSize: 16 },
+  textLorem: { fontFamily: Fonts['800'], fontSize: 16 },
   textLabel: {
     fontSize: 16,
     fontFamily: Fonts['700'],
