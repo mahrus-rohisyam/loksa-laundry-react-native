@@ -41,7 +41,7 @@ const Orders = (props: TabBarState) => {
           onPress={() => navigation.goBack()}
           title='Orders'
           buttonRight={() => { }}
-          roleAdmin
+          roleAdmin={2}
         />
       </View>
 
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: '55%'
   },
-  modal:{
+  modal: {
     width: '100%',
     height: '100%',
     justifyContent: 'flex-end',

@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import IconX from 'react-native-vector-icons/AntDesign';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import IconHistory from 'react-native-vector-icons/Octicons';
+import IconDate from 'react-native-vector-icons/Feather';
 import { Colors, Fonts } from '../../utils';
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
   buttonRight?: () => void;
   onPress?: () => void;
   textRight?: string
-  roleAdmin?: boolean
+  roleAdmin?: number
 }
 
 const CHeader: React.FC<Props> = ({ buttonRight, textRight, title, onPress, roleAdmin }) => {
@@ -20,18 +21,27 @@ const CHeader: React.FC<Props> = ({ buttonRight, textRight, title, onPress, role
         {onPress ?
           <Icon onPress={onPress} name='arrow-left' size={18} color={roleAdmin ? Colors.darkBlue : Colors.blue} /> : <View />
         }
+
         {title &&
           <Text style={styles.title}>{title}</Text>
         }
-        {buttonRight ?
+
+        {buttonRight ? (
           <TouchableOpacity onPress={buttonRight}>
-            {textRight ?
-              <Text style={styles.textRight}>{textRight}</Text> :
-              roleAdmin ? <IconHistory name='history' size={24} color={'#FEB624'} /> :
+            {textRight ? (
+              <Text style={styles.textRight}>{textRight}</Text>
+            ) : roleAdmin === 1 ? (
+              <IconDate name="calendar" size={24} color={Colors.blue} />
+            ) : roleAdmin === 2 ? (
+              <IconHistory name="history" size={24} color={'#FEB624'} />
+            ) : (
               <IconX name='close' size={24} color={'#BDBDBD'} />
+            )
             }
-          </TouchableOpacity> : <View />
-        }
+          </TouchableOpacity>
+        ) : (
+          <View />
+        )}
       </View>
     </View>
   )

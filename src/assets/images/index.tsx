@@ -44,5 +44,6 @@ import ICReports from './ICReports.png';
 import Report from './Report.svg'
 import BGPesanan from './BGPesanan.png'
 import BGPenghasilan from './BGPenghasilan.png'
+import ICChart from './chart.svg'
 
-export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome, ICAntar, ICProses, ICJemput, ICItem, ICAktivityWait, ICAktivityFinish, ICAktivityError, BannerService, ICCuciKering, ICCuciLengkap, ICSetrika, Kemeja, PakaianDalam, Kaos, Celana, Dress, ICDashboardAktif, ICOrderAktif, ICReportsAktif, ICDashboard, ICOrder, ICReports, Report, BGPesanan, BGPenghasilan };
+export { Flag, Frame, Frame2, Frame3, Frame4, Logo, MyPlace, ICHome, ICHomeAktif, ICAktivity, ICActivityAktif, ICProfile, ICProfileAktif, Avatar, BGMaps, Satuan, Kiloan, BGHome, IDown, Group, IHome, ICAntar, ICProses, ICJemput, ICItem, ICAktivityWait, ICAktivityFinish, ICAktivityError, BannerService, ICCuciKering, ICCuciLengkap, ICSetrika, Kemeja, PakaianDalam, Kaos, Celana, Dress, ICDashboardAktif, ICOrderAktif, ICReportsAktif, ICDashboard, ICOrder, ICReports, Report, BGPesanan, BGPenghasilan, ICChart };

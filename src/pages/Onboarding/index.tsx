@@ -96,9 +96,7 @@ const OnBoarding: React.FC = () => {
   return (
     <SafeAreaView style={{ backgroundColor: Colors.blue, height: '100%' }}>
       <View style={{ height: '75%', justifyContent: 'center', alignItems: 'center' }}>
-        <Group height={500} width={500} >
-          <Text>Hello</Text>
-        </Group>
+        <Group height={500} width={500} />
       </View>
 
       <View style={{ height: '25%', paddingVertical: '10%' }}>
