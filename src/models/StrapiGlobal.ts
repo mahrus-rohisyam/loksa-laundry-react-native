@@ -17,4 +17,16 @@ interface IMedia {
   updatedAt: Date;
 }
 
-export type {IMedia};
+interface IAPIMeta {
+  data: Object;
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+export type {IMedia, IAPIMeta};

@@ -9,6 +9,8 @@ interface AuthProviderContext {
   role: Role | null;
   login: (creds: LoginRequest) => Promise<void>;
   logout: () => void;
+  register: () => void;
+  authState: {token: string | null; authenticated: boolean | null};
   loginErrorMessage: string | null;
   isLoading: boolean;
   isError: boolean;
@@ -27,6 +29,13 @@ export const useAuth = () => {
 };
 
 const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
+  const [authState, setAuthState] = useState<{
+    token: string | null;
+    authenticated: boolean | null;
+  }>({
+    authenticated: null,
+    token: null,
+  });
   const [role, setRole] = useState<Role | null>(null);
   const [loginErrorMessage, setLoginErrorMessage] = useState<string | null>(
     null,
@@ -35,6 +44,7 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
   const login = async (credentials: LoginRequest) => {
     try {
       const response = await loginMutation.mutateAsync(credentials);
+      setAuthState({token: response.jwt, authenticated: true});
       setRole(response.user.userRole);
       setLoginErrorMessage(null);
     } catch (error: any) {
@@ -42,17 +52,19 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
       console.log(error);
     }
   };
+  const register = () => {};
   const logout = () => {
     setRole(null);
+    setAuthState({token: null, authenticated: null});
     removeTokenFromStorage('TOKEN');
     removeTokenFromStorage('USER');
     // PUSH TO LOGIN
   };
 
   useEffect(() => {
-    if (readTokenFromStorage('TOKEN') === null) {
-      // PUSH TO LOGIN
-    }
+    // if (readTokenFromStorage('TOKEN') === null) {
+    //   // PUSH TO LOGIN
+    // }
   }, [loginMutation.data]);
 
   const isLoading = loginMutation.isLoading;
@@ -69,6 +81,8 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
         loginErrorMessage,
         logout,
         role,
+        register,
+        authState,
       }}>
       {children}
     </AuthContext.Provider>
