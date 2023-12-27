@@ -37,47 +37,48 @@ const Dashboard = (props: Props) => {
         </View>
       </SafeAreaView>
 
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 22, marginTop: 20, marginBottom: 11 }}>
-        <Text style={styles.textLabel}>Report</Text>
-        <Text style={styles.textDetail}>Lihat Detail</Text>
-      </View>
-
-      <View style={{ flexDirection: 'row', marginHorizontal: 22, justifyContent: 'space-between' }}>
-        <View style={styles.wrapBackground}>
-          <ImageBackground style={{ height: '100%', justifyContent: 'center' }} source={BGPesanan} borderRadius={10}>
-            <View style={{ alignSelf: 'center' }}>
-              <Text style={styles.textDesc}>Pesanan hari ini</Text>
-              <Text style={{ ...styles.textNumb, marginTop: 5 }}>150</Text>
-              <View style={{ ...styles.wrapIconDesc, backgroundColor: '#ECFDF3' }}>
-                <Icon name='arrowup' size={12} color={'#12B76A'} />
-                <Text style={{ color: '#027A48' }}>40%</Text>
-              </View>
-            </View>
-          </ImageBackground>
-        </View>
-        <View style={styles.wrapBackground}>
-          <ImageBackground style={{ height: '100%', justifyContent: 'center' }} source={BGPenghasilan} borderRadius={10}>
-            <View style={{ alignSelf: 'center' }}>
-              <Text style={styles.textDesc}>Penghasilan hari ini</Text>
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
-                <Text style={styles.textDesc}>IDR </Text>
-                <Text style={styles.textNumb}>400,000</Text>
-              </View>
-              <View style={{ backgroundColor: '#FFF1F3', ...styles.wrapIconDesc, }}>
-                <Icon name='arrowdown' size={12} color={'#F63D68'} />
-                <Text style={{ color: '#C01048' }}>5%</Text>
-              </View>
-            </View>
-          </ImageBackground>
-        </View>
-      </View>
-
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 22, marginVertical: 11 }}>
-        <Text style={styles.textLabel}>Orders</Text>
-        <Text style={styles.textDetail}>Lihat Detail</Text>
-      </View>
-
       <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 22, marginTop: 20, marginBottom: 11 }}>
+          <Text style={styles.textLabel}>Report</Text>
+          <Text style={styles.textDetail}>Lihat Detail</Text>
+        </View>
+
+        <View style={{ flexDirection: 'row', marginHorizontal: 22, justifyContent: 'space-between' }}>
+          <View style={styles.wrapBackground}>
+            <ImageBackground style={{ height: '100%', justifyContent: 'center' }} source={BGPesanan} borderRadius={10}>
+              <View style={{ alignSelf: 'center' }}>
+                <Text style={styles.textDesc}>Pesanan hari ini</Text>
+                <Text style={{ ...styles.textNumb, marginTop: 5 }}>150</Text>
+                <View style={{ ...styles.wrapIconDesc, backgroundColor: '#ECFDF3' }}>
+                  <Icon name='arrowup' size={12} color={'#12B76A'} />
+                  <Text style={{ color: '#027A48' }}>40%</Text>
+                </View>
+              </View>
+            </ImageBackground>
+          </View>
+          <View style={styles.wrapBackground}>
+            <ImageBackground style={{ height: '100%', justifyContent: 'center' }} source={BGPenghasilan} borderRadius={10}>
+              <View style={{ alignSelf: 'center' }}>
+                <Text style={styles.textDesc}>Penghasilan hari ini</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5 }}>
+                  <Text style={styles.textDesc}>IDR </Text>
+                  <Text style={styles.textNumb}>400,000</Text>
+                </View>
+                <View style={{ backgroundColor: '#FFF1F3', ...styles.wrapIconDesc, }}>
+                  <Icon name='arrowdown' size={12} color={'#F63D68'} />
+                  <Text style={{ color: '#C01048' }}>5%</Text>
+                </View>
+              </View>
+            </ImageBackground>
+          </View>
+        </View>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 22, marginVertical: 11 }}>
+          <Text style={styles.textLabel}>Orders</Text>
+          <Text style={styles.textDetail}>Lihat Detail</Text>
+        </View>
+
+        {/* <ScrollView showsVerticalScrollIndicator={false}> */}
         <View style={{ marginHorizontal: 22, backgroundColor: Colors.white, borderRadius: 10, paddingVertical: 18, paddingHorizontal: 16 }}>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(() =>
             <CListOrder
@@ -90,6 +91,7 @@ const Dashboard = (props: Props) => {
             />
           )}
         </View>
+        {/* </ScrollView> */}
       </ScrollView>
 
       {/* Modal CHome */}

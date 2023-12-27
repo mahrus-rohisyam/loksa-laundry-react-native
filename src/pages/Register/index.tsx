@@ -44,8 +44,14 @@ const Register = () => {
           </View>
         </View>
 
-        <View style={{ height: '10%' }}>
+        {/* Untuk User */}
+        {/* <View style={{ height: '10%' }}>
           <CButton title='Lanjutkan' type='dark' onPress={() => navigation.navigate('MainApp')} />
+        </View> */}
+
+        {/* Untuk Admin */}
+        <View style={{ height: '10%' }}>
+          <CButton title='Lanjutkan' type='dark' onPress={() => navigation.navigate('MainAppAdmin')} />
         </View>
       </SafeAreaView>
     );

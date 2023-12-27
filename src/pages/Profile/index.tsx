@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { useState } from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 import { Avatar } from '../../assets/images'
 import { CHeader, CList, CListData } from '../../components/global'
@@ -18,7 +18,7 @@ const Profile = (props: Props) => {
   if (edit) {
     return (
       <View style={{ backgroundColor: '#F6FAFE', height: '100%' }}>
-        <CHeader title='Informasi Profile' textRight='Edit' buttonRight={() => openEditPage()} />
+        <CHeader title='Informasi Profile' onPress={() => navigation.goBack()} textRight='Edit' buttonRight={() => openEditPage()} />
         <View style={{ backgroundColor: Colors.white, marginTop: 13, paddingHorizontal: 22 }}>
           <Text style={styles.textParagraph}>Data Pribadi</Text>
           <CListData title='Nama awal' desc='Vaiz' isBorder />
@@ -31,7 +31,7 @@ const Profile = (props: Props) => {
   }
 
   return (
-    <View style={{ backgroundColor: Colors.white, height: '100%' }}>
+    <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: Colors.white, height: '100%' }}>
       <View style={styles.wrapImage}>
         <Image source={Avatar} style={{ height: 69, width: 69 }} />
       </View>
@@ -69,7 +69,7 @@ const Profile = (props: Props) => {
         </TouchableOpacity>
       </View>
 
-    </View>
+    </ScrollView>
   )
 }
 
