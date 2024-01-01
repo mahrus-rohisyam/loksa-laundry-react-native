@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useAuth } from '../../context/AuthProvider';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../route';
 
+import { useAuth } from '../../context/AuthProvider';
+import { RootStackParamList } from '../../route';
 import CButton from '../../components/global/CButton';
 import CTextInput from '../../components/global/CTextArea';
 import { LoginRequest } from '../../models/Login';
@@ -20,7 +20,10 @@ const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [text, onChangeText] = useState<string | null>(null);
 
-  // Function to handle form submission
+  useEffect(() => {
+    if (token) navigation.navigate('Home');
+  }, [token]);
+
   const handleSubmit = () => {
     // Basic validation, you can add more checks as needed
     if (!loginData.identifier || !loginData.password) {

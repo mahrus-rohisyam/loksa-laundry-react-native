@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import { RootStackParamList } from '../../route';
 import { Colors, Fonts } from '../../utils';
-// import Frame from '../../assets/images/group.svg';
 import CButton from '../../components/global/CButton';
 import { Group, Logo } from '../../assets/images';
 

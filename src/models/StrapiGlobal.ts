@@ -17,4 +17,20 @@ interface IMedia {
   updatedAt: Date;
 }
 
-export type {IMedia};
+interface IMeta {
+  pagination: {
+    page: number;
+    pageSize: number;
+    pageCount: number;
+    total: number;
+  };
+}
+
+interface MediaUploadRequest {
+  ref: string;
+  refId: string;
+  field: string;
+  files: any;
+}
+
+export type {IMedia, IMeta, MediaUploadRequest};

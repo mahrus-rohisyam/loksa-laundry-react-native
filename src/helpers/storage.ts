@@ -22,7 +22,7 @@ export const readTokenFromStorage = async (
   try {
     const token = await AsyncStorage.getItem(itemName);
     if (token !== null) {
-      console.log(`Token '${itemName}' from storage:`, token);
+      // console.log(`Token '${itemName}' from storage:`, token);
       return token;
     } else {
       console.log(`Token '${itemName}' not found in storage.`);
