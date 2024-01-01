@@ -2,10 +2,7 @@ import {createContext, useContext, useEffect, useState} from 'react';
 import {LoginRequest} from '../models/Account';
 import {AccountService} from '../service/Account';
 import {readTokenFromStorage, removeTokenFromStorage} from '../helpers/storage';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../route';
-import {IUser} from '../models/User';
+import {RegisterRequest} from '../models/Register';
 
 type Role = 'Member' | 'Admin';
 
@@ -13,6 +10,8 @@ interface AuthProviderContext {
   role: Role | null;
   login: (creds: LoginRequest) => Promise<void>;
   logout: () => void;
+  register: (regData: RegisterRequest) => Promise<void>;
+  authState: {token: string | null; authenticated: boolean | null};
   loginErrorMessage: string | null;
   isLoading: boolean;
   isError: boolean;
@@ -33,8 +32,13 @@ export const useAuth = () => {
 };
 
 const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
-  const navigate =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [authState, setAuthState] = useState<{
+    token: string | null;
+    authenticated: boolean | null;
+  }>({
+    authenticated: null,
+    token: null,
+  });
   const [role, setRole] = useState<Role | null>(null);
   const [user, setUser] = useState<IUser | null>(null);
   const [token, setToken] = useState<string | null>(null);
@@ -43,9 +47,12 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
   );
 
   const loginMutation = AccountService.UseLoginRequest();
+  const registerMutation = AccountService.UseRegisterRequest();
+
   const login = async (credentials: LoginRequest) => {
     try {
       const response = await loginMutation.mutateAsync(credentials);
+      setAuthState({token: response.jwt, authenticated: true});
       setRole(response.user.userRole);
       setLoginErrorMessage(null);
     } catch (error: any) {
@@ -53,37 +60,44 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
       console.log(error);
     }
   };
+
+  const register = async (regData: RegisterRequest) => {
+    try {
+      const response = await registerMutation.mutateAsync(regData);
+      setAuthState({token: response.jwt, authenticated: true});
+      setRole(response.user.userRole);
+      setLoginErrorMessage(null);
+      return response;
+    } catch (error: any) {
+      setLoginErrorMessage(error?.response?.data?.status?.message as string);
+      console.log(error);
+      return error;
+    }
+  };
+
   const logout = () => {
     console.log('LOGOUT TRIGGERED');
     setRole(null);
-    setUser(null);
-    setToken(null);
+    setAuthState({token: null, authenticated: null});
     removeTokenFromStorage('TOKEN');
     removeTokenFromStorage('USER');
-    navigate.navigate('Login');
+  };
+
+  const revalidateToken = async () => {
+    const usr = await readTokenFromStorage('USER');
+    const tkn = await readTokenFromStorage('TOKEN');
+
+    if (tkn !== null && tkn !== undefined) {
+      setAuthState({
+        token: tkn,
+        authenticated: true,
+      });
+    }
   };
 
   useEffect(() => {
-    readTokenFromStorage('TOKEN').then(value => {
-      if (value) setToken(value);
-    });
-    readTokenFromStorage('USER').then((value: any) => {
-      let parsedToken: IUser = JSON.parse(value);
-      if (parsedToken) {
-        setUser(parsedToken);
-        setRole(parsedToken.userRole);
-      }
-    });
-    if (token === null || token == '') {
-      setTimeout(() => {
-        navigate.navigate('Login');
-      }, 3000);
-    }
-    if (token && token !== '')
-      setTimeout(() => {
-        navigate.navigate('Home');
-      }, 3000);
-  }, [loginMutation.data, token]);
+    revalidateToken();
+  }, [loginMutation.data]);
 
   const isLoading = loginMutation.isLoading;
   const isError = loginMutation.isError;
@@ -99,8 +113,8 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
         loginErrorMessage,
         logout,
         role,
-        user,
-        token,
+        register,
+        authState,
       }}>
       {children}
     </AuthContext.Provider>

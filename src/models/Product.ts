@@ -1,31 +1,22 @@
-import {IMedia, IMeta} from './StrapiGlobal';
+import {IAPIMeta, IMedia} from './StrapiGlobal';
 
-interface IProduct {
-  data: {
-    id: number;
-    attributes: {
-      productName: string;
-      productType: 'Kilogram' | 'Piece';
-      productDescription: string;
-      productPrice: string;
-      minimumOrder: string;
-      createdAt: Date;
-      updatedAt: Date;
-      publishedAt: Date;
-      productImage: IMedia;
-    };
-  };
-  meta: IMeta;
-}
-
-interface CreateProductRequest {
-  data: {
+interface Product {
+  id: number;
+  attributes: {
     productName: string;
-    productType: 'Kilogram' | 'Piece';
+    productType: string;
     productDescription: string;
-    productPrice: string;
-    minimumOrder: string;
+    productPrice: number;
+    minimumOrder: number;
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    productImage: IMedia;
   };
 }
 
-export type {IProduct, CreateProductRequest};
+interface ProductListReponse extends IAPIMeta {
+  data: Product[];
+}
+
+export type {Product, ProductListReponse};

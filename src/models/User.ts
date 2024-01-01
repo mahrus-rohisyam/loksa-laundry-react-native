@@ -19,10 +19,10 @@ interface IUser {
   blocked: Boolean;
   createdAt: Date;
   updatedAt: Date;
-  username: string;
-  phoneNumber: string;
-  fullname: string;
-  userRole: 'Admin' | 'Member';
+  username: 'Admin';
+  phoneNumber: '08123456789';
+  fullname: 'Admin Lestarti';
+  userRole: UserRole;
   avatar: IMedia;
   address: IAddress;
 }
@@ -44,4 +44,6 @@ interface IUserInComponent {
   };
 }
 
-export type {IUser, IUserInComponent, IAddress};
+type UserRole = 'Admin' | 'Member';
+
+export type {IUser, UserRole};

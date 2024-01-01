@@ -17,20 +17,16 @@ interface IMedia {
   updatedAt: Date;
 }
 
-interface IMeta {
-  pagination: {
-    page: number;
-    pageSize: number;
-    pageCount: number;
-    total: number;
+interface IAPIMeta {
+  data: Object;
+  meta: {
+    pagination: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
   };
 }
 
-interface MediaUploadRequest {
-  ref: string;
-  refId: string;
-  field: string;
-  files: any;
-}
-
-export type {IMedia, IMeta, MediaUploadRequest};
+export type {IMedia, IAPIMeta};

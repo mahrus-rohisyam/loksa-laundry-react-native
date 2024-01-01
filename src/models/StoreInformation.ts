@@ -1,36 +1,26 @@
 import {IMedia} from './StrapiGlobal';
-import {IAddress} from './User';
 
-interface IStoreInformation {
+export interface StoreInformation {
   data: {
-    id: number;
     attributes: {
       name: string;
       createdAt: Date;
       updatedAt: Date;
       storeMapURL: string;
       adress: {
-        id: number;
-        rt: string;
-        rw: string;
-        city: string;
-        province: string;
-        zipcode: string;
-        adressDetail: string;
-        longitude: string;
-        latitude: string;
+        id: string | number | null;
+        rt: string | number | null;
+        rw: string | number | null;
+        city: string | number | null;
+        province: string | number | null;
+        zipcode: string | number | null;
+        adressDetail: string | number | null;
+        longitude: string | number | null;
+        latitude: string | number | null;
       };
-      storeLogo: IMedia;
+      storeLogo: {
+        data: IMedia;
+      };
     };
   };
-  meta: {};
 }
-
-interface StoreInformationRequest {
-  data: {
-    name: string;
-    adress: IAddress;
-  };
-}
-
-export type {StoreInformationRequest, IStoreInformation};

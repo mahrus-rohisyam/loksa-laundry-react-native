@@ -1,86 +1,49 @@
-import {IProduct} from './Product';
-import {IUserInComponent} from './User';
+import {Product} from './Product';
+import {IAPIMeta} from './StrapiGlobal';
+import {IUser} from './User';
 
-type transactionStatusType =
-  | 'Menunggu Pembayaran'
-  | 'Diantar'
-  | 'Selesai'
-  | 'Dijemput'
-  | 'Diproses';
-
-type paymentStatusType = 'Unpaid' | 'Paid';
-
-interface IOrder {
-  id: number;
-  amount: string;
-  product: IProduct;
-}
-
-interface OrderRequest {
+interface Order {
   id: number;
   amount: number;
+  product: {
+    data: Product;
+  };
 }
 
-interface IPaymentInfo {
-  id: number;
-  paymentStatus: paymentStatusType;
-  totalPrice: string;
-}
+type PaymentStatus = 'Unpaid' | 'Paid';
 
-interface PaymentRequest {
-  paymentProvider: number[];
-  paymentStatus: paymentStatusType;
-  totalPrice: number;
-}
+type TransactionStatus =
+  | 'Menunggu Pembayaran'
+  | 'Pembayaran Selesai'
+  | 'Dibatalkan';
 
-interface IDelivery {
-  id: number;
-  userDistance: string;
-  totalDeliverCost: number | string;
-}
-
-interface DeliverRequest {
-  deliveryProvider: number[];
-  userDistance: string;
-  totalDeliverCost: number;
-}
-
-interface ITransaction {
-  id: number;
+interface Transaction {
+  id: 1;
   attributes: {
     createdAt: Date;
     updatedAt: Date;
-    transactionStatusType: transactionStatusType;
     publishedAt: Date;
-    specialNotes: string;
-    orders: IOrder[];
+    transactionStatus: TransactionStatus;
+    specialNotes: string | null;
+    orders: Order[];
     user: {
-      data: IUserInComponent;
+      data: IUser;
     };
-    paymentInfo: IPaymentInfo;
-    delivery: IDelivery;
+    paymentInfo: {
+      paymentStatus: PaymentStatus;
+      totalPrice: number;
+    };
   };
 }
 
-interface CreateTransactionRequest {
-  data: {
-    transactionStatusType: transactionStatusType;
-    orders: OrderRequest[];
-    user: number[];
-    delivery: DeliverRequest;
-    paymentInfo: PaymentRequest;
-    specialNotes: string | null;
-  };
+interface TransactionListResponse extends IAPIMeta {
+  data: Transaction[];
 }
 
 export type {
-  IDelivery,
-  IOrder,
-  ITransaction,
-  OrderRequest,
-  PaymentRequest,
-  DeliverRequest,
-  transactionStatusType,
-  paymentStatusType,
-  CreateTransactionRequest,
+  Order,
+  PaymentStatus,
+  TransactionStatus,
+  Transaction,
+  TransactionListResponse,
 };
