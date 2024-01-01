@@ -62,6 +62,7 @@ export default CBottom;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
+    // Jika Icon User width: '35%', Icon Admin width: '25%'
     width: '25%',
     flexDirection: 'row',
     alignItems: 'center',

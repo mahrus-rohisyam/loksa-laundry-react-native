@@ -7,18 +7,13 @@ import AuthProvider, {useAuth} from './src/context/AuthProvider';
 function App(): JSX.Element {
   const queryClient = new QueryClient();
 
-  // const isAuthenticationPage =
-  //   Component === login ||
-  //   Component === register ||
-  //   Component === forgotPassword;
-
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <NavigationContainer>
+      <NavigationContainer>
+        <AuthProvider>
           <Route />
-        </NavigationContainer>
-      </AuthProvider>
+        </AuthProvider>
+      </NavigationContainer>
     </QueryClientProvider>
   );
 }

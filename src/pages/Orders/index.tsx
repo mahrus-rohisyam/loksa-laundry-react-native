@@ -76,7 +76,13 @@ const Orders = (props: TabBarState) => {
         style={styles.modal}
       >
         <Pressable style={{ flex: 1 }} onPress={showModalStatusPembayaran}></Pressable>
-        <CModalPay onPress={() => navigation.navigate('OrderDetail')} />
+        <CModalPay
+          title='Status Pembayaran'
+          firstText='Selesai'
+          secondText='Menunggu Pembayaran'
+          thirdText='Error'
+          onPress={() => navigation.navigate('OrderDetail')}
+        />
       </Modal>
     </View>
   )

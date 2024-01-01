@@ -7,9 +7,14 @@ import CButton from './CButton'
 
 type ModalPayProps = {
   onPress: () => void;
+  title: string;
+  firstText: string;
+  secondText: string;
+  thirdText: string;
+  hide?: boolean
 }
 
-const CModalPay: React.FC<ModalPayProps> = ({ onPress }) => {
+const CModalPay: React.FC<ModalPayProps> = ({ onPress, title, firstText, secondText, thirdText, hide }) => {
   const [index, setIndex] = useState<string>('finish');
 
   const getValue = (value: string) => {
@@ -18,10 +23,10 @@ const CModalPay: React.FC<ModalPayProps> = ({ onPress }) => {
 
   return (
     <View style={styles.page}>
-      <Text style={styles.title}>Status Pembayaran</Text>
+      <Text style={styles.title}>{title}</Text>
 
       <TouchableOpacity onPress={() => getValue('finish')} style={styles.button}>
-        <Text style={{ ...styles.text, marginLeft: '3%' }}>Selesai</Text>
+        <Text style={{ ...styles.text, marginLeft: '3%' }}>{firstText}</Text>
         <CheckBox
           checked={index === 'finish'}
           checkedIcon="dot-circle-o"
@@ -29,7 +34,7 @@ const CModalPay: React.FC<ModalPayProps> = ({ onPress }) => {
         />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => getValue('waitPay')} style={{ ...styles.button, borderTopWidth: 1, borderColor: '#E6EDF5', borderBottomWidth: 1, marginHorizontal: '5%', }}>
-        <Text style={styles.text}>Menunggu Pembayaran</Text>
+        <Text style={styles.text}>{secondText}</Text>
         <CheckBox
           checked={index === 'waitPay'}
           checkedIcon="dot-circle-o"
@@ -41,7 +46,7 @@ const CModalPay: React.FC<ModalPayProps> = ({ onPress }) => {
         />
       </TouchableOpacity>
       <TouchableOpacity onPress={() => getValue('error')} style={styles.button}>
-        <Text style={{ ...styles.text, marginLeft: '3%' }}>Error</Text>
+        <Text style={{ ...styles.text, marginLeft: '3%' }}>{thirdText}</Text>
         <CheckBox
           checked={index === 'error'}
           checkedIcon="dot-circle-o"
@@ -49,9 +54,12 @@ const CModalPay: React.FC<ModalPayProps> = ({ onPress }) => {
         />
       </TouchableOpacity>
 
-      <View style={{ marginTop: 11, marginBottom: 34 }}>
-        <CButton title='Terapkan' type='success' onPress={onPress} />
-      </View>
+      {hide ?
+        <View style={{ marginBottom: 20 }} /> :
+        <View style={{ marginTop: 11, marginBottom: 34 }}>
+          <CButton title='Terapkan' type='success' onPress={onPress} />
+        </View>
+      }
     </View>
   )
 }

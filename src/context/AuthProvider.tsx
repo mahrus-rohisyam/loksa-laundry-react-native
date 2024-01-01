@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from 'react';
-import {LoginRequest} from '../models/Login';
+import {LoginRequest} from '../models/Account';
 import {AccountService} from '../service/Account';
 import {readTokenFromStorage, removeTokenFromStorage} from '../helpers/storage';
 import {RegisterRequest} from '../models/Register';
@@ -16,6 +16,8 @@ interface AuthProviderContext {
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
+  user: IUser | null;
+  token: string | null;
 }
 
 const AuthContext = createContext<AuthProviderContext | null>(null);
@@ -24,7 +26,7 @@ export const useAuth = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw new Error('useAuth must be used within a DashboardProvider');
+    throw new Error('useAuth must be used within a useAuthProvider');
   }
   return context;
 };
@@ -38,6 +40,8 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
     token: null,
   });
   const [role, setRole] = useState<Role | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [loginErrorMessage, setLoginErrorMessage] = useState<string | null>(
     null,
   );
@@ -72,6 +76,7 @@ const AuthProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
   };
 
   const logout = () => {
+    console.log('LOGOUT TRIGGERED');
     setRole(null);
     setAuthState({token: null, authenticated: null});
     removeTokenFromStorage('TOKEN');

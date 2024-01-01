@@ -4,17 +4,16 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  ToastAndroid,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {useAuth} from '../../context/AuthProvider';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../route';
 
+import {useAuth} from '../../context/AuthProvider';
+import {RootStackParamList} from '../../route';
 import CButton from '../../components/global/CButton';
 import CTextInput from '../../components/global/CTextArea';
-import {LoginRequest} from '../../models/Login';
+import {LoginRequest} from '../../models/Account';
 import {Colors, Fonts} from '../../utils';
 
 const Login = () => {

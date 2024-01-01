@@ -5,6 +5,7 @@ import {
   Image,
   ImageSourcePropType,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -15,7 +16,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import {RootStackParamList} from '../../route';
 import {Colors, Fonts} from '../../utils';
 import CButton from '../../components/global/CButton';
-import {Group} from '../../assets/images';
+import {Group, Logo} from '../../assets/images';
 
 type SlideItem = {
   id: number;
@@ -70,7 +71,8 @@ const OnBoarding: React.FC = () => {
         data={slides}
         renderItem={({item}: {item: SlideItem}) => {
           return (
-            <SafeAreaView>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={{height: 100}} />
               <View style={styles.box1}>
                 <Image source={item.image} style={styles.image} />
               </View>
@@ -82,7 +84,7 @@ const OnBoarding: React.FC = () => {
                   <Text style={styles.desc}>{item.desc}</Text>
                 </View>
               </View>
-            </SafeAreaView>
+            </ScrollView>
           );
         }}
         dotStyle={{
@@ -110,6 +112,16 @@ const OnBoarding: React.FC = () => {
       <View
         style={{height: '75%', justifyContent: 'center', alignItems: 'center'}}>
         <Group height={500} width={500} />
+        <Image
+          source={Logo}
+          style={{
+            height: 95,
+            width: 179,
+            position: 'absolute',
+            top: 70,
+            left: 100,
+          }}
+        />
       </View>
 
       <View style={{height: '25%', paddingVertical: '10%'}}>
@@ -137,10 +149,11 @@ const styles = StyleSheet.create({
   box2: {
     alignSelf: 'center',
     height: 605,
+    aspectRatio: 1,
     backgroundColor: Colors.blue,
-    width: 605,
     borderTopLeftRadius: 390,
     borderTopRightRadius: 390,
+    paddingHorizontal: 50,
   },
   title: {
     fontFamily: Fonts['700'],

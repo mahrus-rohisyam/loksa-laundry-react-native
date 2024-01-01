@@ -51,7 +51,10 @@ const CItem: React.FC<Props> = ({ title, active, onPress, onLongPress }) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress} onLongPress={onLongPress}>
+      {/* Jika User jalankan ini */}
       {/* {getIcon()} */}
+      
+      {/* Jika Admin jalankan ini */}
       {getIconAdmin()}
       <Text style={active ? styles.textActive : styles.text}>{title}</Text>
     </TouchableOpacity>
