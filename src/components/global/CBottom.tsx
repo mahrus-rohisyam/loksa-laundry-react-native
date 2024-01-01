@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import CItem from './CItem';
-import { Colors } from '../../utils';
+import {Colors} from '../../utils';
 
 type CBottomProps = {
   state: any;
@@ -9,18 +9,17 @@ type CBottomProps = {
   navigation: any;
 };
 
-const CBottom: React.FC<CBottomProps> = ({ state, descriptors, navigation }) => {
-
+const CBottom: React.FC<CBottomProps> = ({state, descriptors, navigation}) => {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{flexDirection: 'row'}}>
       {state.routes.map((route: any, index: number) => {
-        const { options } = descriptors[route.key];
+        const {options} = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-              ? options.title
-              : route.name;
+            ? options.title
+            : route.name;
 
         const isFocused = state.index === index;
 
@@ -32,7 +31,7 @@ const CBottom: React.FC<CBottomProps> = ({ state, descriptors, navigation }) => 
           });
 
           if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate({ name: route.name, merge: true });
+            navigation.navigate({name: route.name, merge: true});
           }
         };
 
@@ -44,7 +43,7 @@ const CBottom: React.FC<CBottomProps> = ({ state, descriptors, navigation }) => 
         };
 
         return (
-          <View style={styles.container}>
+          <View style={styles.container} key={index}>
             <CItem
               key={index}
               title={label}
@@ -57,7 +56,7 @@ const CBottom: React.FC<CBottomProps> = ({ state, descriptors, navigation }) => 
       })}
     </View>
   );
-}
+};
 
 export default CBottom;
 const styles = StyleSheet.create({
@@ -68,6 +67,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 21,
-  }
-})
-
+  },
+});

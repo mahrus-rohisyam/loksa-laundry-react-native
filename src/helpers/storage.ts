@@ -9,7 +9,7 @@ export const saveTokenToStorage = async (
 ): Promise<void> => {
   try {
     await AsyncStorage.setItem(itemName, tokenValue);
-    console.log(`Token '${itemName}' saved successfully.`);
+    // console.log(`Token '${itemName}' saved successfully.`);
   } catch (error) {
     console.error(`Error saving token '${itemName}':`, error);
   }
@@ -22,7 +22,6 @@ export const readTokenFromStorage = async (
   try {
     const token = await AsyncStorage.getItem(itemName);
     if (token !== null) {
-      console.log(`Token '${itemName}' from storage:`, token);
       return token;
     } else {
       console.log(`Token '${itemName}' not found in storage.`);
@@ -34,13 +33,12 @@ export const readTokenFromStorage = async (
   }
 };
 
-// Function to remove a token from AsyncStorage
 export const removeTokenFromStorage = async (
   itemName: string,
 ): Promise<void> => {
   try {
     await AsyncStorage.removeItem(itemName);
-    console.log(`Token '${itemName}' removed from storage.`);
+    // console.log(`Token '${itemName}' removed from storage.`);
   } catch (error) {
     console.error(`Error removing token '${itemName}':`, error);
   }

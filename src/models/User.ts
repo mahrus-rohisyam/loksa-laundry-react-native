@@ -11,7 +11,7 @@ interface IUser {
   username: 'Admin';
   phoneNumber: '08123456789';
   fullname: 'Admin Lestarti';
-  userRole: 'Admin' | 'Member';
+  userRole: UserRole;
   avatar: IMedia;
   address: {
     id: number;
@@ -26,4 +26,6 @@ interface IUser {
   };
 }
 
-export type {IUser};
+type UserRole = 'Admin' | 'Member';
+
+export type {IUser, UserRole};
