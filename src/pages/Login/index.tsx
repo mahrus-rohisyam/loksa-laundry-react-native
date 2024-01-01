@@ -1,22 +1,24 @@
-import {StyleSheet, Text, TouchableOpacity, View, Button} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+import { useAuth } from '../../context/AuthProvider';
+import { RootStackParamList } from '../../route';
+import CButton from '../../components/global/CButton';
 import CTextInput from '../../components/global/CTextArea';
-import {LoginRequest} from '../../models/Account';
-import {useAuth} from '../../context/AuthProvider';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../route';
+import { LoginRequest } from '../../models/Login';
+import { Colors, Fonts } from '../../utils';
 
 const Login = () => {
-  const {login, role, token, user} = useAuth();
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { login, role, isLoading, isError, isSuccess } = useAuth();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [loginData, setLoginData] = useState<LoginRequest>({
     identifier: '',
     password: '',
   });
   const [error, setError] = useState<string | null>(null);
+  const [text, onChangeText] = useState<string | null>(null);
 
   useEffect(() => {
     if (token) navigation.navigate('Home');
@@ -35,31 +37,81 @@ const Login = () => {
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>LoginData</Text>
-      <CTextInput
-        placeholder="Username or Email"
-        onChangeText={text => setLoginData({...loginData, identifier: text})}
-        value={loginData.identifier}
-      />
-      <CTextInput
-        placeholder="Password"
-        isSecure
-        onChangeText={text => setLoginData({...loginData, password: text})}
-        value={loginData.password}
-      />
-      {error && <Text style={{color: 'red'}}>{error}</Text>}
-      <Text style={{backgroundColor: 'black', width: '100%', height: 'auto'}}>
-        {JSON.stringify(`User: ${user} Token: ${token} Role: ${role}`)}
-      </Text>
-      <Button title="Submit" onPress={handleSubmit} />
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text>Go Back</Text>
+    <SafeAreaView style={styles.page}>
+      <View style={{ marginHorizontal: 20, marginTop: 47 }}>
+        <Text style={styles.textTitle}>Silahkan Log in</Text>
+        <Text style={styles.textDesc}>Lorem ipsum dolor sit amet</Text>
+
+        <View style={{ marginBottom: 27 }}>
+          <Text style={styles.text}>Nomor Handphone/Email</Text>
+          <CTextInput
+            onChangeText={onChangeText}
+            placeholder="+628987797369"
+          />
+        </View>
+        <View style={{ marginBottom: 13 }}>
+          <Text style={styles.text}>Password</Text>
+          <CTextInput onChangeText={onChangeText} />
+        </View>
+
+        <Text style={styles.textForgot}>Forgot Password?</Text>
+      </View>
+
+      {/* Untuk User */}
+      {/* <CButton type='dark' title='Log In' onPress={() => navigation.replace('MainApp')} /> */}
+
+      {/* Untuk Admin */}
+      <CButton type='dark' title='Log In' onPress={() => navigation.replace('MainAppAdmin')} />
+
+      <TouchableOpacity onPress={() => navigation.navigate('Register')} style={{ flexDirection: 'row', position: 'absolute', bottom: 0, marginBottom: 75, width: '100%', justifyContent: 'center' }}>
+        <Text style={{ ...styles.textRegister, fontFamily: Fonts['400'], color: Colors.darkBlue }}>Don’t have an account? </Text>
+        <Text style={{ ...styles.textRegister, fontFamily: Fonts['700'], color: Colors.blue }}>Register</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
 export default Login;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  page: {
+    backgroundColor: Colors.white,
+    height: '100%',
+  },
+  text: {
+    color: Colors.darkBlue,
+    fontSize: 14,
+    fontFamily: Fonts['400'],
+    lineHeight: 18
+  },
+  textTitle: { fontSize: 30, fontFamily: Fonts['700'], lineHeight: 38, color: Colors.darkBlue },
+  textDesc: {
+    color: Colors.darkBlue,
+    fontSize: 16,
+    fontFamily: Fonts['400'],
+    lineHeight: 20,
+    marginBottom: 33,
+    marginTop: 10
+  },
+
+  textInput: {
+    padding: 9,
+    borderWidth: 1,
+    marginTop: 7,
+    borderColor: Colors.blue,
+    borderRadius: 5
+  },
+  textForgot: {
+    color: Colors.darkBlue,
+    fontFamily: Fonts['400'],
+    fontSize: 14,
+    lineHeight: 18,
+    textAlign: 'right',
+    textDecorationLine: 'underline',
+    marginBottom: 33
+  },
+  textRegister: {
+    fontSize: 14,
+    lineHeight: 18,
+  }
+});
